@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+### React - Tutorial - John Smilga - Udemy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+It's all about components - independent chunks of user interfaces
 
-## Available Scripts
+With the latest version (17.0), you don't have to import it anymore.
 
-In the project directory, you can run:
+##### JSX Rules
 
-### `yarn start`
+1. Always return a single element
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+function JsxRules() {
+  return (
+    <div>
+      <h1>Heading 1</h1>
+      <h2>Heading 1</h2>
+      <h3>Heading 1</h3>
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ul>
+    </div>
+  )
+}
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+In the above all the elements are wrapped in one <div> tag.
 
-### `yarn test`
+- We cannot add another `<div>` after this
+- Multiple elements must be enclosed in a `<div>` in the return statement, to avoid errors/crashinh
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. If we need multiple adjacent `<div>` tags, we enlose all the divs in `<React.Fragment>` or `<>`
 
-### `yarn build`
+```
+function JsxRules() {
+  return (
+    <React.Fragment>
+      <div>
+        <h1>Heading 1</h1>
+        <h2>Heading 1</h2>
+        <h3>Heading 1</h3>
+        <ul>
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+        </ul>
+      </div>
+      <div>
+        <h1>Heading 1</h1>
+        <h2>Heading 1</h2>
+        <h3>Heading 1</h3>
+        <ul>
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+        </ul>
+      </div>
+    </React.Fragment>
+  )
+}
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Use camel case for class or any attributes in the jsx - `className`, `myAttribute`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+  <div className='myClassName'>
+    <h1>Heading 1</h1>
+    <h2>Heading 1</h2>
+    <h3>Heading 1</h3>
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+  </div>
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Close every element
 
-### `yarn eject`
+```
+  <div></div>
+  <img /> or <img></img>
+  <ComponentName /> or <ComponentName></ComponentName>
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+5. Formatting is important
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- If using emmet extensions, make sure to use paranthesis since some of the extensions add `;` at the end of a line
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+  return;
+  <div></div>;
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The above is caused by one of my extension and added `;` after the return
