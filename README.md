@@ -94,3 +94,11 @@ function JsxRules() {
 ```
 
 The above is caused by one of my extension and added `;` after the return
+
+##### Spread Operator
+
+`return <Book key={book.id} book={book} />;`
+Can be changed to
+`return <Book key={book.id} {...book} />;`
+using spread operator. Now, in the component, we don't need to use `props.book`.
+We can simply access `props`
